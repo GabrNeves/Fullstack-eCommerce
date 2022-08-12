@@ -1,4 +1,4 @@
-# Fullstack-Typescript-Project
+# Fullstack-Typescript-Project=something-random
 
 First choose the project topic. The topics are from REST API lecture.
 
