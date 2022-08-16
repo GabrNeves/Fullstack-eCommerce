@@ -1,8 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import axios from "axios";
+import GoogleLogInComponent from "./GoogleLogInComponent";
 
 function App() {
+  // const fetchUser = () => {
+  //   axios
+  //     .get("http://localhost:9590/users")
+  //     .then((response) => console.log(response))
+  //     .catch((err) => console.log(err));
+  // };
+
+  // useEffect(() => {
+  //   fetchUser()
+  // },[])
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +31,7 @@ function App() {
         >
           Learn React
         </a>
+      <GoogleLogInComponent/>
       </header>
     </div>
   );
