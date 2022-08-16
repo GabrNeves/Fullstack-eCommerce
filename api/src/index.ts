@@ -5,6 +5,8 @@ import dotenv from 'dotenv'
 import productsRouter from './routes/products'
 import usersRouter from './routes/users'
 import cartsRouter from './routes/carts'
+import passport from 'passport'
+import { googleStrategy } from './config/passport'
 
 dotenv.config()
 const app = Express()
@@ -19,11 +21,13 @@ db.once('open', () => { console.log('Connected to database') })
 
 app.use(Express.json())
 app.use(cors())
+app.use(passport.initialize())
+passport.use(googleStrategy)
 
 //routes
 app.use('/products', productsRouter)
 app.use('/users', usersRouter)
-//app.use('/carts', cartsRouter)
+// app.use('/carts', cartsRouter)
 
 //listen
 app.listen(9590, () => console.log('Server started...'))

@@ -1,37 +1,60 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
+
+export type User = {
+  address: {
+    geolocation: {
+      lat: string
+      long: string
+    }
+    city: string
+    street: string
+    number: number
+    zipcode: string
+  }
+  id: number
+  email: string
+  username: string
+  password: string
+  name: {
+    firstname: string
+    lastname: string
+  }
+  phone: string
+  __v: number
+}
 
 const UserSchema = new mongoose.Schema({
   address: {
     geolocation: {
       lat: {
         type: String,
-        required: true,
+        required: false,
       },
       long: {
         type: String,
-        required: true,
+        required: false,
       },
     },
     city: {
       type: String,
-      required: true,
+      required: false,
     },
     street: {
       type: String,
-      required: true,
+      required: false,
     },
     number: {
       type: Number,
-      required: true,
+      required: false,
     },
     zipcode: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   id: {
     type: Number,
-    required: true,
+    required: false,
   },
   email: {
     type: String,
@@ -39,20 +62,20 @@ const UserSchema = new mongoose.Schema({
   },
   username: {
     type: String,
-    required: true,
+    required: false,
   },
   password: {
     type: String,
-    required: true,
+    required: false,
   },
   name: {
     firstname: {
       type: String,
-      required: true,
+      required: false,
     },
     lastname: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   phone: {
@@ -61,10 +84,10 @@ const UserSchema = new mongoose.Schema({
   },
   __v: {
     type: Number,
-    required: true,
+    required: false,
   },
-});
+})
 
-const userModel = mongoose.model("User", UserSchema);
+const userModel = mongoose.model('User', UserSchema)
 
-export default userModel;
+export default userModel
