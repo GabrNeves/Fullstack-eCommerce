@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import LogIn from "./pages/LogIn";
+import Products from "./pages/Products";
 
 function App() {
   // const fetchUser = () => {
@@ -18,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <LogIn/>
+      <Products/>
     </div>
   );
 }

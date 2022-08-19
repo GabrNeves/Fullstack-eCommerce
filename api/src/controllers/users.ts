@@ -14,13 +14,19 @@ export const getAllUsers = async (
   }
 }
 
+export type googleUser = {
+  email: string,
+  firstName: string,
+  lastName: string
+}
+
 export const googleAuthenticate = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const userGoogleData = req.user as User;
+    const userGoogleData = req.user as googleUser;
     const { email, firstName, lastName } = userGoogleData
   } catch (error) {
     console.log(error)
