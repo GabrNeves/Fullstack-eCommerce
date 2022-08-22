@@ -14,6 +14,9 @@ export const googleStrategy = new GoogleTokenStrategy(
       firstName: parsedToken.payload.give_name,
       lastName: parsedToken.payload.family_name
     }
+
+    // create or find user by name
+    
     const user = await UserServices.findOrCreate(userPayload);
     done(null, user)
   },

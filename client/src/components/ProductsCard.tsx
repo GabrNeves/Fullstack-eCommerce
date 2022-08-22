@@ -8,6 +8,11 @@ import { Product } from '../global/types';
 import Rating from '@mui/material/Rating';
 
 export default function ProductsCard({products}:any) {
+  const currencyFormater = new Intl.NumberFormat('de-DE', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2
+  })
   return (
     <Card sx={{ maxWidth: 345 }}>
         {products && products.map((product: Product) => {
@@ -24,7 +29,7 @@ export default function ProductsCard({products}:any) {
                 {product.title}
             </Typography>
             <Typography gutterBottom variant="h5" component="div">
-                {product.price}
+                {currencyFormater.format(product.price)}
             </Typography>
             <Typography variant="body2" color="text.secondary">
                 {product.description}
