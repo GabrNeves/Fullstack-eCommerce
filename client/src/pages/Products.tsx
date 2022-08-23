@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Product } from "../global/types";
 import ProductsCard from '../components/ProductsCard'
+import Box from "@mui/material/Box";
 
 export default function Products() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -16,9 +17,8 @@ export default function Products() {
     fetchProducts();
   }, []);
   return (
-    <div>
-      
+    <Box sx={{margin: 'auto', justifyContent: 'center', alignItems:'center'}}>
         <ProductsCard products={products}/>
-    </div>
+    </Box>
   );
 }

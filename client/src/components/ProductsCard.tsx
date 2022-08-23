@@ -14,10 +14,10 @@ export default function ProductsCard({products}:any) {
     minimumFractionDigits: 2
   })
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ display:'grid', gap: '2rem', gridTemplateColumns: '1fr 1fr 1fr 1fr'}}>
         {products && products.map((product: Product) => {
       return (
-      <CardActionArea>
+      <CardActionArea sx={{maxWidth:'345px'}} key={product.id}>
             <CardMedia
             component="img"
             height="140"
@@ -32,7 +32,8 @@ export default function ProductsCard({products}:any) {
                 {currencyFormater.format(product.price)}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-                {product.description}
+                {product.description.substring(0,100)+'...'}
+                {/* <button className='see-more' onClick={() => console.log('hi')}>see more</button> */}
             </Typography>
             <Rating name="read-only" value={product.rating.rate + product.rating.count} readOnly />
             </CardContent>
