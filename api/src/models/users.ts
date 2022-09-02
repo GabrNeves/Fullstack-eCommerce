@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
+import mongoose, {Document, Model} from 'mongoose'
 
-export type User = {
+export type UserDocument = Document & {
   address: {
     geolocation: {
       lat: string
@@ -11,7 +11,6 @@ export type User = {
     number: number
     zipcode: string
   }
-  id: number
   email: string
   username: string
   password: string
@@ -22,6 +21,8 @@ export type User = {
   phone: string
   __v: number
 }
+
+export interface UserTypeModel extends Model<UserDocument> {}
 
 const UserSchema = new mongoose.Schema({
   address: {
@@ -51,10 +52,6 @@ const UserSchema = new mongoose.Schema({
       type: String,
       required: false,
     },
-  },
-  id: {
-    type: Number,
-    required: false,
   },
   email: {
     type: String,
@@ -88,6 +85,4 @@ const UserSchema = new mongoose.Schema({
   },
 })
 
-const userModel = mongoose.model('User', UserSchema)
-
-export default userModel
+export default mongoose.model<UserDocument, UserTypeModel>('User', UserSchema)

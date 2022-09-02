@@ -2,6 +2,7 @@
 import GoogleTokenStrategy from 'passport-google-id-token'
 import dotenv from 'dotenv'
 import UserServices from '../services/users'
+import {Strategy as JwtStrategy, ExtractJwt} from 'passport-jwt'
 
 dotenv.config()
 
@@ -10,9 +11,11 @@ export const googleStrategy = new GoogleTokenStrategy(
   async function(parsedToken: any, googleId: string, done: any) {
     console.log(parsedToken, 'parsedToken');
     const userPayload = {
-      email: parsedToken.payload.email,
-      firstName: parsedToken.payload.give_name,
-      lastName: parsedToken.payload.family_name
+      email: parsedToken.payload?.email,
+      name: {
+        firstname: parsedToken.payload?.given_name,
+        lastname: parsedToken.payload?.family_name
+      }
     }
 
     // create or find user by name
@@ -21,3 +24,15 @@ export const googleStrategy = new GoogleTokenStrategy(
     done(null, user)
   },
 )
+
+// export const jwtStrategy = new JwtStrategy(
+//   {
+//     secretOrKey: JWT_SECRET,
+//     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+//   },
+//   async (payload: any, done: any) => {
+//     const userEmail = payload.email
+//     const foundUser = await UserServices.findUserByEmail(userEmail)
+//     done(null, foundUser)
+//   }
+// )

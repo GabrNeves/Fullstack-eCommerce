@@ -19,7 +19,7 @@ export default function LogIn() {
     >
       <Typography variant="h3">Login to continue buying</Typography>
       <TextField id="login-form-field" label="Email" variant="standard" sx={{maxWidth: '30ch'}}/>
-      <TextField id="login-form-field" label="Password" variant="standard" type='password' sx={{maxWidth: '30ch'}}/>
+      <TextField id="pass-form-field" label="Password" variant="standard" type='password' sx={{maxWidth: '30ch'}}/>
       <Typography variant="body2">Don't have an account yet? <a href="#">SignIn</a></Typography>
       <Divider>
         <Typography variant="body2">or</Typography>
