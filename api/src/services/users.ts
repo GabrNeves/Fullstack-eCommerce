@@ -1,4 +1,24 @@
 import User, { UserDocument } from '../models/users'
+import { NotFoundError } from '../helper/apiError'
+
+const createUser = async (user: UserDocument): Promise<UserDocument> => {
+  return user.save()
+}
+
+const updateUser = async (
+  userId: string,
+  update: Partial<UserDocument>
+): Promise<UserDocument | null> => {
+  const foundUser = await User.findByIdAndUpdate(userId, update, {
+    new: true,
+  })
+
+  if (!foundUser) {
+    throw new NotFoundError(`User ${userId} not found!`)
+  }
+
+  return foundUser
+}
 
 const getUsers = async () => {
   const getUser = await User.find()
@@ -18,8 +38,7 @@ const findOrCreate = async (payload: Partial<UserDocument>) => {
           lastname: payload.name?.lastname,
         },
       })
-      const newCreatedUser = await newUser.save()
-      return newCreatedUser
+      return await newUser.save()
     }
   } catch (error) {
     console.log(error)
@@ -27,7 +46,13 @@ const findOrCreate = async (payload: Partial<UserDocument>) => {
 }
 
 const findUserByEmail = async (email: string) => {
-  return User.findOne({email:email})
+  return User.findOne({ email: email })
 }
 
-export default { getUsers, findOrCreate, findUserByEmail }
+export default {
+  createUser,
+  updateUser,
+  getUsers,
+  findOrCreate,
+  findUserByEmail,
+}
