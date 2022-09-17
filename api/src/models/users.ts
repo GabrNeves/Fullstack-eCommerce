@@ -20,6 +20,7 @@ export type UserDocument = Document & {
   }
   phone: string
   __v: number
+  isBanned: boolean
 }
 
 export interface UserTypeModel extends Model<UserDocument> {}
@@ -83,6 +84,16 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     required: false,
   },
+  isBanned: {
+    type: Boolean,
+    default: false,
+  },
+  orderIds: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Order',
+    }
+  ]
 })
 
 export default mongoose.model<UserDocument, UserTypeModel>('User', UserSchema)

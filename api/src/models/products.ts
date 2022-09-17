@@ -1,4 +1,19 @@
-import mongoose from "mongoose";
+import mongoose, { Document, Model } from "mongoose";
+
+export type ProductDocument = Document & {
+  _id: string,
+  title: string,
+  price: number,
+  description: string,
+  category: string,
+  image: string,
+  rating: {
+    rate: number,
+    count: number,
+  },
+}
+
+export interface ProductTypeModel extends Model<ProductDocument> {}
 
 const ProductSchema = new mongoose.Schema({
   id: {
@@ -36,6 +51,8 @@ const ProductSchema = new mongoose.Schema({
     },
   },
 });
+
+// ProductSchema.index({ name: 'text', category: 'text', desciption: 'text' })
 
 const productModel = mongoose.model("Product", ProductSchema);
 
