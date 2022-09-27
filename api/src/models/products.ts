@@ -54,6 +54,7 @@ const ProductSchema = new mongoose.Schema({
 
 // ProductSchema.index({ name: 'text', category: 'text', desciption: 'text' })
 
-const productModel = mongoose.model("Product", ProductSchema);
-
-export default productModel;
+export default mongoose.model<ProductDocument, ProductTypeModel>(
+  'Product',
+  ProductSchema
+)

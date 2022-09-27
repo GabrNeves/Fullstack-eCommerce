@@ -33,7 +33,7 @@ export const createUser = async (
       password: hashedPassword,
     })
     await UserServices.createUser(user)
-    res.json()
+    res.json(user)
   } catch (error) {
     console.log(error)
   }
