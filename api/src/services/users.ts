@@ -87,8 +87,10 @@ const banUser = async (userId: string) => {
 export default {
   createUser,
   updateUser,
+  findById,
   getUsers,
   deleteUser,
   findOrCreate,
   findUserByEmail,
+  banUser
 }
