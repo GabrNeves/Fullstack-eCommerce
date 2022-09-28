@@ -85,6 +85,17 @@ const banUser = async (userId: string) => {
   }
 }
 
+const updateNewPassword = async (email: string, password: string) => {
+  const foundUser = await findUserByEmail(email)
+  if (foundUser) {
+    foundUser.password = password
+    const userWithNewpass = await foundUser.save()
+    return userWithNewpass
+  } else {
+    throw new NotFoundError('User not found')
+  }
+}
+
 const admin = async (userId: string) => {
   const foundUser = await User.findOne({_id: userId})
   if (foundUser) {
@@ -112,5 +123,6 @@ export default {
   findOrCreate,
   findUserByEmail,
   banUser,
+  updateNewPassword,
   admin
 }

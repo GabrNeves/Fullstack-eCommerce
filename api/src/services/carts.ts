@@ -22,7 +22,8 @@ const getCarts = async () => {
 }
 
 const findByUserId = async (userId: string): Promise<CartDocument[]> => {
-  return Cart.find({ userId: userId })
+  const findById = await Cart.find({ userId: userId })
+  return findById
 }
 
 export default { getCarts, createCart, findById, findByUserId }

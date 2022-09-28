@@ -9,7 +9,7 @@ import {
   deleteUser,
   updateUser,
   banUser,
-  makeAdmin,
+  turnAdmin,
   logInWithPasswordController,
 } from '../controllers/users'
 import adminCheck from '../middlewares/admin'
@@ -32,7 +32,7 @@ router.patch(
   '/:userId/make-admin',
   passport.authenticate('jwt', { session: false }),
   adminCheck,
-  makeAdmin
+  turnAdmin
 )
 router.get(
   '/',
