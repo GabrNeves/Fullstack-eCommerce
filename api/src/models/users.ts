@@ -21,6 +21,8 @@ export type UserDocument = Document & {
   phone: string
   __v: number
   isBanned: boolean
+  loginWith: string
+  admin: boolean
 }
 
 export interface UserTypeModel extends Model<UserDocument> {}
@@ -87,6 +89,15 @@ const UserSchema = new mongoose.Schema({
   isBanned: {
     type: Boolean,
     default: false,
+  },
+  loginWith: {
+    type: String,
+    required: false,
+    default: 'password',
+  },
+  admin: {
+    type: Boolean,
+    default: false
   },
   orderIds: [
     {

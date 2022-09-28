@@ -57,6 +57,7 @@ const findOrCreate = async (payload: Partial<UserDocument>) => {
           firstname: payload.name?.firstname,
           lastname: payload.name?.lastname,
         },
+        loginWith: 'google',
       })
       return await newUser.save()
     }
@@ -84,6 +85,24 @@ const banUser = async (userId: string) => {
   }
 }
 
+const admin = async (userId: string) => {
+  const foundUser = await User.findOne({_id: userId})
+  if (foundUser) {
+    if (foundUser.admin === true) {
+      foundUser.admin = false
+    } else {
+      if (foundUser.isBanned === true) {
+        foundUser.admin = false
+      } else {
+        foundUser.admin = true
+      }
+    }
+    updateUser(userId, foundUser)
+  } else {
+    throw new NotFoundError('User not found')
+  }
+}
+
 export default {
   createUser,
   updateUser,
@@ -92,5 +111,6 @@ export default {
   deleteUser,
   findOrCreate,
   findUserByEmail,
-  banUser
+  banUser,
+  admin
 }
