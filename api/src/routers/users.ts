@@ -24,19 +24,19 @@ router.put(
 router.patch(
   '/:userId/ban-user',
   passport.authenticate('jwt', { session: false }),
-  adminCheck,
+  // adminCheck,
   banUser
 )
 router.patch(
   '/:userId/make-admin',
   passport.authenticate('jwt', { session: false }),
-  adminCheck,
+  // adminCheck,
   turnAdmin
 )
 router.get(
   '/',
   passport.authenticate('jwt', { session: false }),
-  adminCheck,
+  // adminCheck,
   getAllUsers
 )
 router.post('/login', passwordLogIn)

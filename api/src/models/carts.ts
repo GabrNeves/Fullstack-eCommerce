@@ -13,6 +13,7 @@ const ProductCartSchema = new mongoose.Schema({
   },
   userId: {
     type: Number,
+    required: true,
   },
   date: {
     type: String,

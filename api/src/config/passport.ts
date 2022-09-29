@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import UserServices from '../services/users'
 import {Strategy as JwtStrategy, ExtractJwt} from 'passport-jwt'
 
+
 dotenv.config()
 
 export const googleStrategy = new GoogleTokenStrategy(
@@ -25,14 +26,14 @@ export const googleStrategy = new GoogleTokenStrategy(
   },
 )
 
-// export const jwtStrategy = new JwtStrategy(
-//   {
-//     secretOrKey: JWT_SECRET,
-//     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-//   },
-//   async (payload: any, done: any) => {
-//     const userEmail = payload.email
-//     const foundUser = await UserServices.findUserByEmail(userEmail)
-//     done(null, foundUser)
-//   }
-// )
+export const jwtStrategy = new JwtStrategy(
+  {
+    secretOrKey: process.env.JWT_SECRET,
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  },
+  async (payload: any, done: any) => {
+    const userEmail = payload.email
+    const foundUser = await UserServices.findUserByEmail(userEmail)
+    done(null, foundUser)
+  }
+)
