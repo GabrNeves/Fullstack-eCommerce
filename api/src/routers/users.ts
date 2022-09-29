@@ -1,5 +1,5 @@
 import { Router } from 'express'
-
+import adminCheck from '../middlewares/admin'
 import passport from 'passport'
 import {
   getAllUsers,
@@ -10,9 +10,8 @@ import {
   updateUser,
   banUser,
   turnAdmin,
-  logInWithPasswordController,
+  passwordLogIn,
 } from '../controllers/users'
-import adminCheck from '../middlewares/admin'
 
 const router = Router()
 
@@ -40,7 +39,7 @@ router.get(
   adminCheck,
   getAllUsers
 )
-router.post('/login', logInWithPasswordController)
+router.post('/login', passwordLogIn)
 router.get(
   '/:userId',
   passport.authenticate('jwt', { session: false }),
