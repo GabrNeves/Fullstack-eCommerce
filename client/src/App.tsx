@@ -18,8 +18,8 @@ function App() {
 
   return (
     <div className="App">
-      <LogIn/>
-      {/* <Products/> */}
+      {/* <LogIn/> */}
+      <Products/>
     </div>
   );
 }
