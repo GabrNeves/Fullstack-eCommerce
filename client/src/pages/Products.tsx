@@ -19,8 +19,7 @@ export default function Products() {
   }, []);
   return (
     <div>
-      <NavBar/>
-      <Box sx={{margin: 'auto', justifyContent: 'center', alignItems:'center'}}>
+      <Box sx={{margin: 'auto', justifyContent: 'center', alignItems:'center', maxWidth:'1500px', border: 'none'}}>
           <ProductsCard products={products}/>
       </Box>
     </div>

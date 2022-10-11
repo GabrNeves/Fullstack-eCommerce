@@ -14,7 +14,7 @@ export default function ProductsCard({products}:any) {
     minimumFractionDigits: 2
   })
   return (
-    <Card sx={{ display:'grid', gap: '2rem', gridTemplateColumns: '1fr 1fr 1fr 1fr'}}>
+    <Card className='product-card'>
         {products && products.map((product: Product) => {
       return (
       <CardActionArea sx={{maxWidth:'345px'}} key={product.id}>

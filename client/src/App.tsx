@@ -3,6 +3,8 @@ import "./App.css";
 import axios from "axios";
 import LogIn from "./pages/LogIn";
 import Products from "./pages/Products";
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 
 function App() {
   // const fetchUser = () => {
@@ -19,7 +21,9 @@ function App() {
   return (
     <div className="App">
       {/* <LogIn/> */}
+      <NavBar/>
       <Products/>
+      <Footer/>
     </div>
   );
 }

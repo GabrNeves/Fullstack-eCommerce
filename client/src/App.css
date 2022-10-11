@@ -28,15 +28,42 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.product-image {
+  height: 160px;
+}
+
+.social-media {
+  display: flex;
+  gap: 2rem;
+  list-style-type: none;
+  justify-content: center;
+}
+
+.footer {
+  padding: 2rem;
+}
+
+.product-card {
+  display: grid;
+  gap: 2rem;
+  margin: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media screen and (max-width: 1500px) {
+  .product-card{
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-.product-image {
-  height: 160px;
+@media screen and (max-width: 1000px) {
+  .product-card{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .product-card{
+    grid-template-columns: 1fr;
+  }
 }
